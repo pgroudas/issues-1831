@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# source:
+#   https://raw.githubusercontent.com/twitter/commons/master/pants
+
+source build-support/python/libvirtualenv.sh
+
+PANTS_VERSION=0.0.36
+
+PANTS_PACKAGES=(
+  pantsbuild.pants==${PANTS_VERSION}
+  pantsbuild.pants.contrib.scrooge==${PANTS_VERSION}
+)
+
+setup_virtualenv pants ${PANTS_PACKAGES[@]} ${PIP_OPTIONS}
+
+exec pants "$@"
